@@ -1,20 +1,20 @@
 module Data.Quadtrees where
 
-class QuadtreeMatrix a where
-  isZero :: a -> Bool
-  zero :: a
-  isIdent :: a -> Bool
+class QuadtreeMatrix qm where
+  isZero :: qm -> Bool
+  zero :: qm
+  isIdent :: qm -> Bool
   isIdent _ = False
-  isScalar :: a -> Bool
-  scalarAdd :: a -> a -> a
-  scalarSubtract :: a -> a -> a
-  scalarMult :: a -> a -> a
-  isQuad :: a -> Bool
-  mkQuad :: (a, a, a, a) -> a
-  nw :: a -> a
-  ne :: a -> a
-  sw :: a -> a
-  se :: a -> a
+  isScalar :: qm -> Bool
+  scalarAdd :: qm -> qm -> qm
+  scalarSubtract :: qm -> qm -> qm
+  scalarMult :: qm -> qm -> qm
+  isQuad :: qm -> Bool
+  mkQuad :: (qm, qm, qm, qm) -> qm
+  nw :: qm -> qm
+  ne :: qm -> qm
+  sw :: qm -> qm
+  se :: qm -> qm
 
 data Matrix a = ZeroM | IdentM | ScalarM a |
   QuadM (Matrix a, Matrix a, Matrix a, Matrix a)

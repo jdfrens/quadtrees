@@ -25,7 +25,7 @@ solveLinear (_, plusLU', omega, p, q) b = (q #*| z) where
   backSubst (QuadM (plusLU'nw,e,_,plusLU'se)) (BinV (y_n, y_s)) (BinV (omega_n, omega_s)) = BinV (z_n, z_s) where
       z_n = backSubst plusLU'nw (y_n - e #*| z_s) omega_s
       z_s = backSubst plusLU'se y_s omega_n
-      
+
   ZeroM #*| _ = ZeroV
   -- IdentM #*| v = v
   _ #*| ZeroV = ZeroV
