@@ -1,6 +1,7 @@
 module Data.Bintrees where
-  
-data (Num a) => Vector a =	ZeroV | ScalarV a | BinV (Vector a, Vector a)
+
+type Bin a = (Vector a, Vector a)
+data (Num a) => Vector a =	ZeroV | ScalarV a | BinV (Bin a)
   deriving (Eq, Show)
 
 instance (Num a) => Num (Vector a) where
@@ -15,8 +16,8 @@ instance (Num a) => Num (Vector a) where
   abs _ = error "nothing"
   signum _ = error "nothing"
 
-normalize (ScalarV 0) = ZeroV
+normalize (ScalarV 0)           = ZeroV
 normalize (BinV (ZeroV, ZeroV)) = ZeroV
-normalize v = v
+normalize v                     = v
 
 zipBin f (xn, xs) (yn, ys) = (f xn yn, f xs ys)
